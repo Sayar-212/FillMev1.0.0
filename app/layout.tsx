@@ -1,0 +1,36 @@
+import type React from "react"
+import type { Metadata } from "next"
+import { GeistSans } from "geist/font/sans"
+import { GeistMono } from "geist/font/mono"
+import "./globals.css"
+import ClientLayout from "./layout.client.tsx"
+
+export const metadata: Metadata = {
+  title: "FillMe - Your all in 1 storage destination",
+  description: "Store Everything. Structured. Forever. Drop it. Tag it. Find it.",
+  generator: "FillMe",
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="icon" href="https://i.ibb.co/ynt6N2Dz/favicon.png" type="image/png" />
+        <style>{`
+html {
+  font-family: ${GeistSans.style.fontFamily};
+  --font-sans: ${GeistSans.variable};
+  --font-mono: ${GeistMono.variable};
+}
+        `}</style>
+      </head>
+      <body suppressHydrationWarning>
+        <ClientLayout>{children}</ClientLayout>
+      </body>
+    </html>
+  )
+}
